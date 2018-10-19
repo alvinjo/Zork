@@ -1,8 +1,10 @@
 package com.qa.Zork;
 
-import java.util.ArrayList;
-
 public class Map {
+	
+	
+	String[] items = new String[] {"Ogre Knife", "Laser Rifle", "Magic Mushrooms"};
+	
 	
 	String[][] locationInfo = new String[][] {
 		{ "00 A fallen tree sits quietly in a clearing. The tree trunk has been hollowed out with a shiny green object buried within.", 
@@ -21,55 +23,22 @@ public class Map {
 		
 	};
 	
-	String[] items = new String[] {"Ogre Knife", "Laser Rifle", "Magic Mushrooms"};
-	ArrayList<String> inventory = new ArrayList<>();
 	
-
 	
 	public Map() {
 		
 	}
 	
-	
-	public String getFromInventory(int index) {
-		return inventory.get(index);
+	public String getItem(int index) {
+		return items[index];
 	}
 	
-	public void addToInventory(String item) {
-		inventory.add(item);
+	public String[][] getLocationInfo(){
+		return locationInfo;
 	}
 	
-	
-	public String whereAmI(int y, int x) {
-		
-		return locationInfo[y][x];
-		
-	}
-	
-	public String takeItem(int y, int x) {
-		
-		if(y == 0 && x == 0) {
-			return items[0];
-		} else if (y == 0 && x == 2) {
-			return items[2];
-		}
-		
-		
-		return "nothing";
-	}
-	
-	
-	public void useItem(int y, int x, String item) {
-		
-		switch(item) {
-		case "Magic Mushrooms":
-			if(y == 3 && x == 1) {
-				System.out.println("You give the wizard mushrooms. The wizard smiles and gifts you his laser rifle.");
-				locationInfo[3][1] = "It smells like weed here.";
-			}
-			
-		}
-		
+	public void updateLocationInfo(int y, int x, String text) {
+		locationInfo[y][x] = text;
 	}
 	
 }
